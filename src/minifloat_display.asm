@@ -282,7 +282,7 @@ PrintFloatValue:
 	inc e
 
 	push de
-	ld b, strlen("0.0087890625") ; 2^-7 * 1.125
+	ld b, strlen("+0.0087890625") ; 2^-7 * 1.125
 	call ClearText
 	pop de
 
