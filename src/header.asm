@@ -39,10 +39,10 @@ Reset::
 
 	ld sp, wStackBottom
 
-	assert BANK(OAMDMA) != 0, "`OAMDMA` is in ROM0, please remove this write to `rROMB0`"
-	ld a, BANK(OAMDMA)
+	; assert BANK(OAMDMA) != 0, "`OAMDMA` is in ROM0, please remove this write to `rROMB0`"
+	; ld a, BANK(OAMDMA)
 	; No need to write bank number to HRAM, interrupts aren't active
-	ld [rROMB0], a
+	; ld [rROMB0], a
 	ld hl, OAMDMA
 	lb bc, OAMDMA.end - OAMDMA, LOW(hOAMDMA)
 .copyOAMDMA
@@ -73,10 +73,10 @@ Reset::
 
 	; Load the correct ROM bank for later
 	; Important to do it before enabling interrupts
-	assert BANK(Intro) != 0, "`Intro` is in ROM0, please write 1 to the bank registers instead"
-	ld a, BANK(Intro)
-	ldh [hCurROMBank], a
-	ld [rROMB0], a
+	; assert BANK(Intro) != 0, "`Intro` is in ROM0, please write 1 to the bank registers instead"
+	; ld a, BANK(Intro)
+	; ldh [hCurROMBank], a
+	; ld [rROMB0], a
 
 	; Select wanted interrupts here
 	; You can also enable them later if you want

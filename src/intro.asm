@@ -1,9 +1,15 @@
+INCLUDE "defines.asm"
 
 SECTION "Intro", ROMX
 
 Intro::
-; Remove this line
-	rst $38
+	call LoadFont
+	ld a, %11100100
+	ldh [hBGP], a
 
-; Put your code here!
-	jr @
+	call InitDisplayView
+
+.infLoop:
+	rst WaitVBlank
+	call UpdateDisplayView
+	jr .infLoop
